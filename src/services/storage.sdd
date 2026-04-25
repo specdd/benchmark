@@ -1,0 +1,36 @@
+Spec: Storage Service
+
+Purpose:
+  Encapsulate all localStorage access for TODO persistence.
+
+Owns:
+  storage.js
+
+Must:
+  Serialize todo arrays to JSON before writing.
+  Deserialize JSON back to plain objects on read.
+  Return an empty array when no stored data exists.
+  Use a fixed storage key for the todo collection.
+
+Must not:
+  Import component code.
+  Construct Todo model instances — return plain objects only.
+  Perform business logic.
+
+Exposes:
+  StorageService.load()
+  StorageService.save(todos)
+
+Scenario: load with no prior data
+  Given localStorage has no entry for the todo key
+  When load is called
+  Then an empty array is returned
+
+Scenario: round-trip persistence
+  Given a list of todo plain objects
+  When save is called and then load is called
+  Then the returned list equals the saved list
+
+Done when:
+  load and save are implemented and covered by tests.
+  No business logic or component imports exist.

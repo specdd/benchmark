@@ -1,0 +1,67 @@
+Spec: Todo Service
+
+Purpose:
+  Own all business logic for creating, removing, toggling, and filtering TODOs.
+
+Owns:
+  todo.js
+
+Must:
+  Delegate persistence to StorageService.
+  Load todos from storage on construction.
+  Persist todos to storage after every mutating operation.
+  Support filtering by all, active, and completed states.
+
+Must not:
+  Access localStorage directly.
+  Perform DOM operations.
+  Import component code.
+
+Depends on:
+  StorageService
+  Todo (model)
+
+Exposes:
+  TodoService.add(title)
+  TodoService.remove(id)
+  TodoService.toggle(id)
+  TodoService.getAll()
+  TodoService.getFiltered(filter)
+  TodoService.clearCompleted()
+
+Handles:
+  Empty or whitespace-only title on add — must reject without adding.
+
+Scenario: add valid todo
+  Given a non-empty title
+  When add is called
+  Then a new Todo is appended to the list
+  And the list is persisted
+
+Scenario: add empty title
+  Given an empty or whitespace title
+  When add is called
+  Then no todo is added
+  And storage is not written
+
+Scenario: toggle todo
+  Given an existing todo id
+  When toggle is called
+  Then the todo's completed state is flipped
+  And the list is persisted
+
+Scenario: remove todo
+  Given an existing todo id
+  When remove is called
+  Then the todo is absent from the list
+  And the list is persisted
+
+Scenario: clear completed
+  When clearCompleted is called
+  Then all todos with completed = true are removed
+  And the list is persisted
+
+Done when:
+  All scenarios have tests.
+  No direct localStorage access exists.
+  Filtering returns correct subsets for all three filter values.

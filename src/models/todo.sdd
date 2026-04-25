@@ -1,0 +1,33 @@
+Spec: Todo Model
+
+Purpose:
+  Represent a single TODO item and protect its state transitions.
+
+Owns:
+  todo.js
+
+Must:
+  Expose id, title, and completed fields.
+  Generate a unique id on creation.
+  Provide a toggle method that flips completed state.
+  Treat title as a non-empty string.
+
+Must not:
+  Access localStorage or any persistence layer.
+  Import service or component code.
+  Perform DOM operations.
+
+Scenario: toggle completed
+  Given a todo with completed = false
+  When toggle is called
+  Then completed becomes true
+
+Scenario: toggle back
+  Given a todo with completed = true
+  When toggle is called
+  Then completed becomes false
+
+Done when:
+  Todo instances carry id, title, and completed.
+  Toggle correctly flips completed state.
+  No persistence or DOM imports exist.

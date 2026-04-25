@@ -1,0 +1,39 @@
+Spec: App Component
+
+Purpose:
+  Root component. Bootstraps the application, owns the active filter state,
+  and coordinates child components.
+
+Owns:
+  app.js
+
+Must:
+  Accept a mount target DOM element.
+  Instantiate TodoService and pass it to child components.
+  Render TodoFormComponent, TodoListComponent, and filter controls.
+  Update the displayed list when filter state changes.
+  Re-render the list after every todo mutation.
+
+Must not:
+  Access localStorage directly.
+  Contain business logic.
+  Perform todo CRUD outside of TodoService.
+
+Depends on:
+  TodoService
+  TodoFormComponent
+  TodoListComponent
+
+Scenario: initial render
+  Given the app is mounted
+  Then the form, list, and filter controls are present in the DOM
+  And all todos are displayed
+
+Scenario: filter change
+  Given the active filter changes to "active"
+  Then only incomplete todos are displayed
+
+Done when:
+  App mounts without errors.
+  Filter state is reflected in the rendered list.
+  Child components receive updated data after each mutation.

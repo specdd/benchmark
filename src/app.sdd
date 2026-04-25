@@ -1,0 +1,38 @@
+Spec: TODO App
+
+Platform: JavaScript/ES6
+
+Purpose:
+  Single-page TODO application built with Vanilla JS ES6, OOP.
+
+Owns:
+  ./*
+
+Structure:
+  models/: Domain models
+  services/: Business logic and storage
+  components/: UI components with DOM responsibility
+  index.html: Application entry point
+  main.js: Bootstrap — mounts AppComponent into the DOM
+
+Must:
+  Use ES6 classes for all logic and UI components.
+  Use OOP.
+  No inline JavaScript is permitted.
+  Separate model, service, and component responsibilities.
+  Keep DOM manipulation inside components.
+  Keep business logic inside services.
+  Persist TODO state across page reloads in local storage.
+  Maintain SRP for all services and features.
+  Follow best JavaScript development practices.
+
+Must not:
+  Use external frameworks or libraries.
+  Mix business logic into components.
+  Access localStorage directly from components.
+
+Forbids:
+  jQuery
+  React
+  Vue
+  Angular
