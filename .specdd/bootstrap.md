@@ -92,8 +92,8 @@ event.sdd
 policy.sdd
 ```
 
-Named specs are allowed when multiple specs exist in one directory and unsuffixed names would collide or be ambiguous,
-but default to no suffix.
+Named specs are allowed when multiple specs exist in one directory and unsuffixed names would collide or be ambiguous.
+When in doubt, omit the suffix.
 
 ```text
 invoice.service.sdd
