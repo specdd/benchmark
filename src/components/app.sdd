@@ -4,25 +4,36 @@ Purpose:
   Root component. Bootstraps the application, owns the active filter state,
   and coordinates child components.
 
+Structure:
+  ./app.js: Root component implementation.
+
 Owns:
-  app.js
+  ./app.js
+
+References:
+  ../services/todo.sdd
+  ./todo-form.sdd
+  ./todo-list.sdd
 
 Must:
   Accept a mount target DOM element.
-  Instantiate TodoService and pass it to child components.
-  Render TodoFormComponent, TodoListComponent, and filter controls.
+  Instantiate @TodoService and wire child components to it through callbacks.
+  Render @TodoForm, @TodoList, and filter controls.
   Update the displayed list when filter state changes.
   Re-render the list after every todo mutation.
 
 Must not:
   Access localStorage directly.
   Contain business logic.
-  Perform todo CRUD outside of TodoService.
+  Perform todo CRUD outside of @TodoService.
 
 Depends on:
-  TodoService
-  TodoFormComponent
-  TodoListComponent
+  @TodoService
+  @TodoForm
+  @TodoList
+
+Exposes:
+  @App
 
 Scenario: initial render
   Given the app is mounted

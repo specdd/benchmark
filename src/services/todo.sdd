@@ -3,11 +3,18 @@ Spec: Todo Service
 Purpose:
   Own all business logic for creating, removing, toggling, and filtering TODOs.
 
+Structure:
+  ./todo.js: Todo service implementation.
+
 Owns:
-  todo.js
+  ./todo.js
+
+References:
+  ./storage.sdd
+  ../models/todo.sdd
 
 Must:
-  Delegate persistence to StorageService.
+  Delegate persistence to @StorageService.
   Load todos from storage on construction.
   Persist todos to storage after every mutating operation.
   Support filtering by all, active, and completed states.
@@ -18,24 +25,24 @@ Must not:
   Import component code.
 
 Depends on:
-  StorageService
-  Todo (model)
+  @StorageService
+  @Todo
 
 Exposes:
-  TodoService.add(title)
-  TodoService.remove(id)
-  TodoService.toggle(id)
-  TodoService.getAll()
-  TodoService.getFiltered(filter)
-  TodoService.clearCompleted()
+  @TodoService.add
+  @TodoService.remove
+  @TodoService.toggle
+  @TodoService.getAll
+  @TodoService.getFiltered
+  @TodoService.clearCompleted
 
 Handles:
-  Empty or whitespace-only title on add — must reject without adding.
+  Empty or whitespace-only title passed to @TodoService.add must be rejected without adding.
 
 Scenario: add valid todo
   Given a non-empty title
   When add is called
-  Then a new Todo is appended to the list
+  Then a new @Todo is appended to the list
   And the list is persisted
 
 Scenario: add empty title

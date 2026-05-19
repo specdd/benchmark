@@ -3,34 +3,43 @@ Spec: Todo Item Component
 Purpose:
   Render a single todo with toggle and remove controls.
 
+Structure:
+  ./todo-item.js: Todo item component implementation.
+
 Owns:
-  todo-item.js
+  ./todo-item.js
+
+References:
+  ../models/todo.sdd
 
 Must:
   Display the todo title.
   Reflect completed state visually (e.g. strikethrough or checked checkbox).
-  Invoke onToggle with the todo id when the toggle control is activated.
-  Invoke onRemove with the todo id when the remove control is activated.
+  Invoke @onToggle with the todo id when the toggle control is activated.
+  Invoke @onRemove with the todo id when the remove control is activated.
 
 Must not:
-  Call TodoService directly.
+  Call @TodoService directly.
   Modify the todo object.
   Access localStorage.
 
+Exposes:
+  @TodoItem
+
 Accepts:
-  todo: Todo
-  onToggle(id) callback
-  onRemove(id) callback
+  todo: @Todo
+  @onToggle callback that receives the todo id.
+  @onRemove callback that receives the todo id.
 
 Scenario: toggle interaction
   Given a rendered todo item
   When the user activates the toggle control
-  Then onToggle is called with the todo's id
+  Then @onToggle is called with the todo's id
 
 Scenario: remove interaction
   Given a rendered todo item
   When the user activates the remove control
-  Then onRemove is called with the todo's id
+  Then @onRemove is called with the todo's id
 
 Scenario: completed visual state
   Given a todo with completed = true
@@ -38,6 +47,6 @@ Scenario: completed visual state
   Then the completed style is applied to the title
 
 Done when:
-  onToggle and onRemove fire with the correct id.
+  @onToggle and @onRemove fire with the correct id.
   Completed state is reflected in the rendered output.
   No service or storage imports exist.

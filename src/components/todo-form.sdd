@@ -4,36 +4,42 @@ Purpose:
   Render the new-todo input and submit control. Notify the parent when a
   valid title is submitted.
 
+Structure:
+  ./todo-form.js: Todo form component implementation.
+
 Owns:
-  todo-form.js
+  ./todo-form.js
 
 Must:
   Render a text input and a submit mechanism (button or Enter key).
   Clear the input after a successful submit.
-  Invoke the onAdd callback with the trimmed title.
+  Invoke the @onAdd callback with the trimmed title.
   Reject submission if the trimmed title is empty.
 
 Must not:
-  Call TodoService directly.
+  Call @TodoService directly.
   Contain business logic beyond input trimming and empty-check.
   Access localStorage.
 
+Exposes:
+  @TodoForm
+
 Accepts:
-  onAdd(title) callback
+  @onAdd callback that receives the trimmed title.
 
 Scenario: valid submission
   Given the input contains a non-empty title
   When the user submits
-  Then onAdd is called with the trimmed title
+  Then @onAdd is called with the trimmed title
   And the input is cleared
 
 Scenario: empty submission
   Given the input is empty or whitespace
   When the user submits
-  Then onAdd is not called
+  Then @onAdd is not called
   And the input remains focused
 
 Done when:
-  onAdd is called only for non-empty titles.
+  @onAdd is called only for non-empty titles.
   Input clears after valid submission.
   No direct service or storage imports exist.

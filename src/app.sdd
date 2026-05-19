@@ -3,17 +3,39 @@ Spec: TODO App
 Platform: JavaScript/ES6
 
 Purpose:
-  Single-page TODO application built with Vanilla JS ES6, OOP.
-
-Owns:
-  ./*
+  Single-page TODO application built with Vanilla JS ES6 and OOP.
 
 Structure:
-  models/: Domain models
-  services/: Business logic and storage
-  components/: UI components with DOM responsibility
-  index.html: Application entry point
-  main.js: Bootstrap — mounts AppComponent into the DOM
+  ./app.sdd: Root application spec.
+  ./models/: Domain models and colocated model specs.
+  ./services/: Business logic, persistence adapters, and colocated service specs.
+  ./components/: UI components and colocated component specs.
+  ./index.html: Application entry point.
+  ./main.js: Browser bootstrap that mounts @App into the DOM.
+  ./components/*.sdd: Component-level SpecDD contracts.
+  ./models/*.sdd: Model-level SpecDD contracts.
+  ./services/*.sdd: Service-level SpecDD contracts.
+
+Owns:
+  Application architecture and source-tree boundaries.
+  ./app.sdd
+  ./index.html
+  ./main.js
+  ./components/*.sdd
+  ./models/*.sdd
+  ./services/*.sdd
+
+Can modify:
+  ./app.sdd
+  ./index.html
+  ./main.js
+  ./components/*.sdd
+  ./models/*.sdd
+  ./services/*.sdd
+
+Can read:
+  ./**
+  ../tests/**
 
 Must:
   Use ES6 classes for all logic and UI components.

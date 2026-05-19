@@ -3,8 +3,14 @@ Spec: Storage Service
 Purpose:
   Encapsulate all localStorage access for TODO persistence.
 
+Structure:
+  ./storage.js: Storage service implementation.
+
 Owns:
-  storage.js
+  ./storage.js
+
+References:
+  ../models/todo.sdd
 
 Must:
   Serialize todo arrays to JSON before writing.
@@ -14,12 +20,12 @@ Must:
 
 Must not:
   Import component code.
-  Construct Todo model instances — return plain objects only.
+  Construct @Todo model instances; return plain objects only.
   Perform business logic.
 
 Exposes:
-  StorageService.load()
-  StorageService.save(todos)
+  @StorageService.load
+  @StorageService.save
 
 Scenario: load with no prior data
   Given localStorage has no entry for the todo key

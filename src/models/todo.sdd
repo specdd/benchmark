@@ -3,8 +3,11 @@ Spec: Todo Model
 Purpose:
   Represent a single TODO item and protect its state transitions.
 
+Structure:
+  ./todo.js: Todo model implementation.
+
 Owns:
-  todo.js
+  ./todo.js
 
 Must:
   Expose id, title, and completed fields.
@@ -16,6 +19,10 @@ Must not:
   Access localStorage or any persistence layer.
   Import service or component code.
   Perform DOM operations.
+
+Exposes:
+  @Todo
+  @Todo.toggle
 
 Scenario: toggle completed
   Given a todo with completed = false

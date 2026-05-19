@@ -3,24 +3,36 @@ Spec: Todo List Component
 Purpose:
   Render the current filtered list of todos as TodoItem components.
 
+Structure:
+  ./todo-list.js: Todo list component implementation.
+
 Owns:
-  todo-list.js
+  ./todo-list.js
+
+References:
+  ./todo-item.sdd
 
 Must:
-  Accept a todos array and render one TodoItemComponent per entry.
-  Accept onToggle and onRemove callbacks and pass them to each item.
+  Accept a todos array and render one @TodoItem per entry.
+  Accept @onToggle and @onRemove callbacks and pass them to each item.
   Re-render the entire list when the todos array changes.
   Display an empty state when the todos array is empty.
 
 Must not:
-  Call TodoService directly.
+  Call @TodoService directly.
   Filter or modify the todos array.
   Access localStorage.
 
+Depends on:
+  @TodoItem
+
+Exposes:
+  @TodoList
+
 Accepts:
-  todos: Todo[]
-  onToggle(id) callback
-  onRemove(id) callback
+  todos: @Todo[]
+  @onToggle callback that receives a todo id.
+  @onRemove callback that receives a todo id.
 
 Scenario: renders items
   Given a non-empty todos array
@@ -34,5 +46,5 @@ Scenario: empty state
 
 Done when:
   Items match the provided todos array length.
-  onToggle and onRemove propagate to each TodoItemComponent.
+  @onToggle and @onRemove propagate to each @TodoItem.
   No service or storage imports exist.
