@@ -1,8 +1,7 @@
 Spec: Todo Form Component
 
 Purpose:
-  Render the new-todo input and submit control. Notify the parent when a
-  valid title is submitted.
+  Provide the new-todo input and notify the parent when a valid title is submitted.
 
 Structure:
   ./todo-form.js: Todo form component implementation.
@@ -19,7 +18,6 @@ Must:
 Must not:
   Call @TodoService directly.
   Contain business logic beyond input trimming and empty-check.
-  Access localStorage.
 
 Exposes:
   @TodoForm
@@ -40,6 +38,6 @@ Scenario: empty submission
   And the input remains focused
 
 Done when:
-  @onAdd is called only for non-empty titles.
+  Valid submissions call @onAdd with the trimmed title.
   Input clears after valid submission.
-  No direct service or storage imports exist.
+  Empty submissions keep focus without calling @onAdd.

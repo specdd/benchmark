@@ -1,0 +1,40 @@
+Spec: Test Suite
+
+Platform: Jest/JavaScript
+
+Purpose:
+  Validate source behavior from outside the source tree.
+
+Structure:
+  ./tests.sdd: Test-suite spec.
+  ./models/: Model tests.
+  ./services/: Service tests.
+  ./components/: Component tests.
+
+Owns:
+  Test organization and coverage expectations.
+  ./tests.sdd
+  ./models/*.test.js
+  ./services/*.test.js
+  ./components/*.test.js
+
+Can modify:
+  ./tests.sdd
+  ./models/*.test.js
+  ./services/*.test.js
+  ./components/*.test.js
+
+Can read:
+  ../src/**
+
+Must:
+  Keep tests outside the source tree.
+  Cover behavior required by source specs and scenarios.
+  Use Jest for executable verification.
+
+Must not:
+  Define application source code.
+  Weaken source architecture boundaries.
+
+Done when:
+  Relevant source scenarios have matching Jest coverage.

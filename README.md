@@ -2,8 +2,8 @@
 
 A small todo app demonstrator for **SpecDD**.
 
-The project shows how code can be guided by colocated `.sdd` specs. Code and specs live in `src/`; tests live in
-`tests/`.
+The project shows how code can be guided by `.sdd` specs. Root app concerns live in `example.sdd`; source code and
+source-local specs live in `src/`; tests live in `tests/`.
 
 ## Purpose
 
@@ -17,6 +17,7 @@ This repository is a minimal benchmark/demo for experimenting with SpecDD-style 
 
 ```text
 .specdd/   SpecDD bootstrap instructions
+example.sdd Root app/repository spec
 src/       Todo app source code and colocated .sdd specs
 tests/     Test suite
 ````
@@ -38,7 +39,7 @@ No. It is intentionally small and exists to demonstrate SpecDD concepts.
 
 ### What should I look at first?
 
-Start with `.specdd/bootstrap.*.md`, then inspect the `.sdd` files in `src/`.
+Start with `.specdd/bootstrap.*.md`, then inspect `example.sdd`, `src/src.sdd`, and the colocated `.sdd` files in `src/`.
 
 ### The specs are longer than the code!
 

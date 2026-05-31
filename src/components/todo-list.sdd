@@ -1,7 +1,7 @@
 Spec: Todo List Component
 
 Purpose:
-  Render the current filtered list of todos as TodoItem components.
+  Render the current filtered todo collection as @TodoItem components.
 
 Structure:
   ./todo-list.js: Todo list component implementation.
@@ -11,6 +11,7 @@ Owns:
 
 References:
   ./todo-item.sdd
+  ../models/todo.sdd
 
 Must:
   Accept a todos array and render one @TodoItem per entry.
@@ -21,7 +22,6 @@ Must:
 Must not:
   Call @TodoService directly.
   Filter or modify the todos array.
-  Access localStorage.
 
 Depends on:
   @TodoItem
@@ -45,6 +45,6 @@ Scenario: empty state
   Then an empty-state indicator is shown
 
 Done when:
-  Items match the provided todos array length.
-  @onToggle and @onRemove propagate to each @TodoItem.
-  No service or storage imports exist.
+  Rendered items match the provided todos array length.
+  Toggle and remove callbacks propagate to each @TodoItem.
+  Empty todos render an empty-state indicator.

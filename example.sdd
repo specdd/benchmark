@@ -1,0 +1,58 @@
+Spec: TODO Example App
+
+Platform: JavaScript/ES6
+
+Purpose:
+  Provide a small Vanilla JavaScript TODO app used as a SpecDD example.
+  Define repository-level application boundaries shared by source, tests, and project metadata.
+
+Structure:
+  ./example.sdd: Root application and repository spec.
+  ./.specdd/: SpecDD bootstrap files.
+  ./src/: Browser TODO app source tree and colocated source specs.
+  ./tests/: Jest test suite and colocated test-suite spec.
+  ./README.md: Project overview and navigation notes.
+  ./package.json: Node package metadata and test script.
+  ./yarn.lock: Yarn dependency lockfile aligned with package metadata.
+  ./jest.config.cjs: Jest configuration.
+
+Owns:
+  Application purpose, architecture boundaries, and repository layout.
+  ./example.sdd
+  ./.specdd/bootstrap.project.md
+  ./README.md
+  ./package.json
+  ./yarn.lock
+  ./jest.config.cjs
+
+Can modify:
+  ./example.sdd
+  ./.specdd/bootstrap.project.md
+  ./README.md
+  ./package.json
+  ./yarn.lock
+  ./jest.config.cjs
+  ./tests/tests.sdd
+
+Can read:
+  ./**
+
+Must:
+  Be a Vanilla JavaScript/ES6 single-page TODO application.
+  Implement application logic, services, models, and UI components as ES6 classes.
+  Keep model, service, and component responsibilities separated.
+  Persist TODO state across page reloads in local storage.
+  Keep tests in ./tests/ and source in ./src/.
+  Keep root documentation aligned with the spec layout.
+
+Must not:
+  Use external frontend frameworks or runtime libraries in the app source.
+  Mix business logic into components.
+  Access localStorage directly from components.
+  Put tests inside ./src/.
+
+Forbids:
+  jQuery
+  React
+  Vue
+  Angular

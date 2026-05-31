@@ -1,8 +1,7 @@
 Spec: App Component
 
 Purpose:
-  Root component. Bootstraps the application, owns the active filter state,
-  and coordinates child components.
+  Mount the application, own active filter state, and coordinate child components.
 
 Structure:
   ./app.js: Root component implementation.
@@ -23,7 +22,6 @@ Must:
   Re-render the list after every todo mutation.
 
 Must not:
-  Access localStorage directly.
   Contain business logic.
   Perform todo CRUD outside of @TodoService.
 

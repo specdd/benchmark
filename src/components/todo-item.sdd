@@ -1,7 +1,7 @@
 Spec: Todo Item Component
 
 Purpose:
-  Render a single todo with toggle and remove controls.
+  Render a single todo row with toggle and remove controls.
 
 Structure:
   ./todo-item.js: Todo item component implementation.
@@ -21,7 +21,6 @@ Must:
 Must not:
   Call @TodoService directly.
   Modify the todo object.
-  Access localStorage.
 
 Exposes:
   @TodoItem
@@ -47,6 +46,5 @@ Scenario: completed visual state
   Then the completed style is applied to the title
 
 Done when:
-  @onToggle and @onRemove fire with the correct id.
+  Toggle and remove interactions fire callbacks with the correct id.
   Completed state is reflected in the rendered output.
-  No service or storage imports exist.

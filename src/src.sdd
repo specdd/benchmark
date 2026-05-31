@@ -1,12 +1,11 @@
-Spec: TODO App
-
-Platform: JavaScript/ES6
+Spec: Source Tree
 
 Purpose:
-  Single-page TODO application built with Vanilla JS ES6 and OOP.
+  Contain the browser implementation for the TODO app.
+  Preserve model, service, component, and bootstrap boundaries for source files.
 
 Structure:
-  ./app.sdd: Root application spec.
+  ./src.sdd: Source-tree spec.
   ./models/: Domain models and colocated model specs.
   ./services/: Business logic, persistence adapters, and colocated service specs.
   ./components/: UI components and colocated component specs.
@@ -17,8 +16,8 @@ Structure:
   ./services/*.sdd: Service-level SpecDD contracts.
 
 Owns:
-  Application architecture and source-tree boundaries.
-  ./app.sdd
+  Source-tree organization and implementation boundaries.
+  ./src.sdd
   ./index.html
   ./main.js
   ./components/*.sdd
@@ -26,7 +25,7 @@ Owns:
   ./services/*.sdd
 
 Can modify:
-  ./app.sdd
+  ./src.sdd
   ./index.html
   ./main.js
   ./components/*.sdd
@@ -38,23 +37,15 @@ Can read:
   ../tests/**
 
 Must:
-  Use ES6 classes for all logic and UI components.
-  Use OOP.
-  No inline JavaScript is permitted.
-  Separate model, service, and component responsibilities.
+  Keep source organized into models, services, and components.
   Keep DOM manipulation inside components.
   Keep business logic inside services.
-  Persist TODO state across page reloads in local storage.
-  Maintain SRP for all services and features.
-  Follow best JavaScript development practices.
+  Keep persistence access behind services.
+  Keep browser bootstrap in ./main.js.
+  Keep root component mounting in ./components/app.js.
+  Use no inline JavaScript in ./index.html.
+  Use inherited ES6 class-based architecture.
 
 Must not:
-  Use external frameworks or libraries.
-  Mix business logic into components.
-  Access localStorage directly from components.
-
-Forbids:
-  jQuery
-  React
-  Vue
-  Angular
+  Put tests inside this source tree.
+  Own repository-level app concerns outside the source tree.

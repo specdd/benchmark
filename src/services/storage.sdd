@@ -24,6 +24,7 @@ Must not:
   Perform business logic.
 
 Exposes:
+  @StorageService
   @StorageService.load
   @StorageService.save
 
@@ -38,5 +39,5 @@ Scenario: round-trip persistence
   Then the returned list equals the saved list
 
 Done when:
-  load and save are implemented and covered by tests.
-  No business logic or component imports exist.
+  Load with missing data returns an empty array.
+  Save and load round-trip plain todo objects.

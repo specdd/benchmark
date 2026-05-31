@@ -1,7 +1,7 @@
 Spec: Todo Service
 
 Purpose:
-  Own all business logic for creating, removing, toggling, and filtering TODOs.
+  Own todo creation, removal, toggling, filtering, and persistence coordination.
 
 Structure:
   ./todo.js: Todo service implementation.
@@ -29,6 +29,7 @@ Depends on:
   @Todo
 
 Exposes:
+  @TodoService
   @TodoService.add
   @TodoService.remove
   @TodoService.toggle
@@ -69,6 +70,6 @@ Scenario: clear completed
   And the list is persisted
 
 Done when:
-  All scenarios have tests.
-  No direct localStorage access exists.
+  Add, remove, toggle, filtering, and clear-completed behaviors have Jest coverage.
+  Storage is only accessed through @StorageService.
   Filtering returns correct subsets for all three filter values.
